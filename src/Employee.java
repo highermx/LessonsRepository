@@ -1,9 +1,9 @@
 public class Employee {
-    String name;
-    String profession;
-    String email;
-    long phone;
-    int age;
+    private String name;
+    private String profession;
+    private String email;
+    private long phone;
+    private int age;
 
     @Override
     public String toString() {
