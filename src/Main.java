@@ -1,3 +1,4 @@
+
 import lesson10.Animal;
 import lesson10.AnimalCanSwim;
 import lesson10.Cat;
@@ -5,8 +6,20 @@ import lesson10.Dog;
 
 import static lesson10.Animal.totalAnimalsCounter;
 
+
+
 public class Main {
     public static void main(String[] args) {
+        Employee employee1 = new Employee("John", "Java developer", "johnjava@gmail.com", 795195475, 31);
+        System.out.println(employee1);
+
+        Car car = new Car();
+        car.start();
+
+        
+        
+
+
 
         AnimalCanSwim dog = new Dog("Rex");
         System.out.println("Cобаку зовут: " + dog.getName());
@@ -36,4 +49,7 @@ public class Main {
 
 
     }
+
+     }
+
 }
