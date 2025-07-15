@@ -1,52 +1,46 @@
+import Lesson11.Circle;
+import Lesson11.Figure;
+import Lesson11.Square;
+import Lesson11.Triangle;
+
 import java.util.Arrays;
 
 public class Main {
+    public static double sumArea(Figure[] figures) {
+         double sum = 0;
+         for(Figure sums: figures) {
+             sum += sums.findTheArea();
+         }
+         return sum;
+
+    }
+
     public static void main(String[] args) {
-        int[] source = {-2, 5, 0, 9, 3, 6};
-        int[] target = {8, -4, 7, 1};
+        Circle circle = new Circle(7);
+        Triangle triangle = new Triangle(5, 8);
+        Square square = new Square(12);
 
-        int[] result = new int[source.length + target.length];
+        circle.findTheArea();
+        triangle.findTheArea();
+        square.findTheArea();
 
-        System.arraycopy(source, 0, result, 0, source.length);
-        System.arraycopy(target, 0, result, source.length, target.length);
+        System.out.println("------------------");
+        System.out.println("Массив других по размеру фигур: ");
 
-        System.out.println(Arrays.toString(result));
 
-        int left = 0;
+        Figure[] allFigures = {
+                new Circle(6),
+                new Triangle(7, 12),
+                new Square(8)
 
-        int right = result.length - 1;
-        boolean flag;
+        };
 
-        do {
-            flag = false;
+        double arrayAreaSum = sumArea(allFigures);
 
-            for (int i = left; i < right; i++) {
-                if (result[i] > result[i + 1]) {
-                    int temp = result[i];
-                    result[i] = result[i + 1];
-                    result[i + 1] = temp;
-                    flag = true;
-                }
-            }
-            if (!flag) break;
 
-            flag = false;
-            right--;
+        System.out.println(Arrays.toString(allFigures));
+        System.out.println("Сумма площадей всех фигур в массиве: " + arrayAreaSum);
 
-            for (int i = right; i > left; i--) {
-                if (result[i] < result[i - 1]) {
-                    int temp = result[i];
-                    result[i] = result[i - 1];
-                    result[i - 1] = temp;
-                    flag = true;
-                }
-            }
-            left++;
-
-        } while (flag && left <= right);
-
-        System.out.println(Arrays.toString(result));
-        
 
     }
 }
