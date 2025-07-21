@@ -1,10 +1,16 @@
 
+import lesson12.ArrayDataException;
+import lesson12.ArraySizeException;
+import lesson12.ArrayValueCalculator;
+=======
+
 import Lesson11.Circle;
 import Lesson11.Figure;
 import Lesson11.Square;
 import Lesson11.Triangle;
 
 import java.util.Arrays;
+
 
 public class Main {
     public static double sumArea(Figure[] figures) {
@@ -91,6 +97,24 @@ public class Main {
 
 
 
+
+
+        String[][] testData = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+
+
+        try {
+            int result = ArrayValueCalculator.doCalculator(testData);
+            System.out.println("Sum: " + result);
+        } catch (ArraySizeException e) {
+            System.out.println(e.getMessage());
+        } catch (ArrayDataException e) {
+            System.out.println(e.getMessage() + " ; error in line " + e.getRow() + " position: " + e.getColumn());
+        }
 
 
     }
