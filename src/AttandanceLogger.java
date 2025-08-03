@@ -6,7 +6,6 @@ public class AttandanceLogger {
 
     public void addVisit(String userId, String timestamp) {
 
-        // Обновляем счетчик посещений через Iterator
         updateUserVisits(userId);
         updateHourVisits(timestamp);
     }
