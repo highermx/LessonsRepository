@@ -3,6 +3,7 @@ import java.util.*;
 public class AttandanceLogger {
     private final Map<String, Integer> userVisits = new HashMap<>();
     private final Map<String, List<String>> hourVisits = new HashMap<>();
+    //----
 
     public void addVisit(String userId, String timestamp) {
 
