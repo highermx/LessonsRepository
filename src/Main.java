@@ -47,6 +47,18 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        int[][] worldMap = {
+                {1,1,2,2,1},
+                {2,1,2,1,2},
+                {1,2,1,2,1}
+        };
+
+        Voyager island = new DfsVoyager();
+        int result = island.lookupIslands(worldMap);
+
+        System.out.println("Обнаружено островов: " + result);
+
         //1
         List<String> newtext = new ArrayList<>(Arrays.asList("Cat", "Dog", "Dolph", "Turtle", "Dog", "Parrot", "Cat", "Turtle", "Cat", "Turtle"));
         countOccurance(newtext, "Turtle");
@@ -94,6 +106,7 @@ public class Main {
         System.out.println("Данная строка встречается в списке: " + counter + " раз.");
 
     }
+
 
     //Задача 2
 
