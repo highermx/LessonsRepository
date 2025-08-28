@@ -257,6 +257,20 @@ import static lesson10.Animal.totalAnimalsCounter;
 
 public class Main {
     public static void main(String[] args) {
+
+        FileLoggerConfiguration config = new FileLoggerConfiguration(
+                "C:\\Users\\Максим\\Desktop",
+                "Test.txt",
+                LoggingLevel.DEBUG,
+                1024,
+                "[%s][%s] %s");
+
+        Logger logger = new FileLogger(config);
+
+        logger.debug("Запуск приложения");
+        logger.info("Пользователь вошёл в систему");
+        logger.debug("Отправка запроса к БД");
+
         Employee employee1 = new Employee("John", "Java developer", "johnjava@gmail.com", 795195475, 31);
         System.out.println(employee1);
 
@@ -289,6 +303,7 @@ public class Main {
         dog.animalCounter();
         cat.animalCounter();
         System.out.println("Всего животных: " + Animal.totalAnimalsCounter());
+
 
 
 
