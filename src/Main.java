@@ -272,7 +272,9 @@ import static lesson10.Animal.totalAnimalsCounter;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        ValueCalculator calculator = new ValueCalculator(1000000);
+        calculator.doCalc();
 
         FileLoggerConfiguration config = new FileLoggerConfiguration(
                 "C:\\Users\\Максим\\Desktop",
