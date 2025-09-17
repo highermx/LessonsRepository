@@ -1,3 +1,4 @@
+package project;
 
 import framework.printer.StdoutPrinter;
 import framework.runner.Runner;
