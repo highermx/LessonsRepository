@@ -51,19 +51,19 @@ public class Main {
                 {"user_303", "11:59"}
         };
 
-       
+
         System.out.println("Добавление посещений:");
         for (String[] visit : testVisits) {
             System.out.printf("- %s в %s%n", visit[0], visit[1]);
             getUsers.addVisit(visit[0], visit[1]);
         }
 
-        
+
         System.out.println("\nСтатистика посещений:");
         getUsers.getVisitFrequency().forEach((user, count) ->
                 System.out.printf("Пользователь %s: %d посещений%n", user, count));
 
-        
+
         System.out.println("\nАнализ популярности:");
         System.out.println("Самое активное время: " + getUsers.getMostPopularHour());
 
@@ -109,7 +109,7 @@ public class Main {
 
 
     }
-    
+
     //Задача 1
 
     public static void countOccurance(List<String> text, String line) {
@@ -300,8 +300,8 @@ public class Main {
         Car car = new Car();
         car.start();
 
-        
-        
+
+
 
 
 
@@ -434,6 +434,4 @@ public class Main {
     }
 
      }
-
 }
-
