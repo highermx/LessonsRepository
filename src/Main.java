@@ -28,6 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
+
+    public static void main(String[] args) throws Exception {
+        TestRunner.start(MathUtilsTest.class);
+
     public static void main(String[] args) {
         AttandanceLogger getUsers = new AttandanceLogger();
 
@@ -100,6 +104,7 @@ public class Main {
 
         System.out.println("Первая запись Сергеева: " + directory.find("Сергеев"));
         System.out.println("Все записи Сергеева: " + directory.findAll("Сергеев"));
+
 
 
 
