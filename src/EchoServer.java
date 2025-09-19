@@ -17,7 +17,7 @@ public class EchoServer {
             BufferedReader consoleIn = new BufferedReader(
                     new InputStreamReader(System.in));
 
-            // Поток чтения от клиента
+            // Поток чтения от клиентаа
             new Thread(() -> {
                 try {
                     String inputLine;
