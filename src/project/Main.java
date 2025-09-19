@@ -14,5 +14,6 @@ public class Main {
             Runner runner = new TestAutomationRunner(printer);
             runner.run(List.of(CalculatorTest.class, CalculatorLineTest.class));
 
+
     }
 }

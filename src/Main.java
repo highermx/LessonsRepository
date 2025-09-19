@@ -232,11 +232,11 @@ import java.util.Arrays;
 
 public class Main {
     public static double sumArea(Figure[] figures) {
-         double sum = 0;
-         for(Figure sums: figures) {
-             sum += sums.findTheArea();
-         }
-         return sum;
+        double sum = 0;
+        for (Figure sums : figures) {
+            sum += sums.findTheArea();
+        }
+        return sum;
 
     }
 
@@ -272,166 +272,153 @@ import lesson10.AnimalCanSwim;
 import lesson10.Cat;
 import lesson10.Dog;
 
-import static lesson10.Animal.totalAnimalsCounter;
+import static lesson10.Animal.totalAnimalsCounter ;
 
 
+        public class Main {
+            public static void main(String[] args) throws InterruptedException {
+                ValueCalculator calculator = new ValueCalculator(1000000);
+                calculator.doCalc();
 
-public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        ValueCalculator calculator = new ValueCalculator(1000000);
-        calculator.doCalc();
+                FileLoggerConfiguration config = new FileLoggerConfiguration(
+                        "C:\\Users\\Максим\\Desktop",
+                        "Test.txt",
+                        LoggingLevel.DEBUG,
+                        1024,
+                        "[%s][%s] %s");
 
-        FileLoggerConfiguration config = new FileLoggerConfiguration(
-                "C:\\Users\\Максим\\Desktop",
-                "Test.txt",
-                LoggingLevel.DEBUG,
-                1024,
-                "[%s][%s] %s");
+                Logger logger = new FileLogger(config);
 
-        Logger logger = new FileLogger(config);
+                logger.debug("Запуск приложения");
+                logger.info("Пользователь вошёл в систему");
+                logger.debug("Отправка запроса к БД");
 
-        logger.debug("Запуск приложения");
-        logger.info("Пользователь вошёл в систему");
-        logger.debug("Отправка запроса к БД");
+                Employee employee1 = new Employee("John", "Java developer", "johnjava@gmail.com", 795195475, 31);
+                System.out.println(employee1);
 
-        Employee employee1 = new Employee("John", "Java developer", "johnjava@gmail.com", 795195475, 31);
-        System.out.println(employee1);
-
-        Car car = new Car();
-        car.start();
-
+                Car car = new Car();
+                car.start();
 
 
+                AnimalCanSwim dog = new Dog("Rex");
+                System.out.println("Cобаку зовут: " + dog.getName());
+                dog.run(426);
+                dog.swim(6);
+
+                AnimalCanSwim dog1 = new Dog("Tom");
+                System.out.println("Cобаку зовут: " + dog1.getName());
+                dog1.run(363);
+                dog1.swim(10);
+
+                Animal cat = new Cat("Richard");
+                System.out.println("Кота зовут: " + cat.getName());
+                cat.run(125);
+
+                Animal cat1 = new Cat("Lusya");
+                System.out.println("Кота зовут: " + cat1.getName());
+                cat1.run(215);
+
+                dog.animalCounter();
+                cat.animalCounter();
+                System.out.println("Всего животных: " + Animal.totalAnimalsCounter());
 
 
+                //Задание №1
+                CustomArrayList list = new CustomArrayList();
+                list.add(5);
+                list.add(10);
+                list.add(15);
 
-        AnimalCanSwim dog = new Dog("Rex");
-        System.out.println("Cобаку зовут: " + dog.getName());
-        dog.run(426);
-        dog.swim(6);
+                System.out.println("Содержимое списка:");
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println("Элемент " + i + ": " + list.get(i));
+                }
 
-        AnimalCanSwim dog1 = new Dog("Tom");
-        System.out.println("Cобаку зовут: " + dog1.getName());
-        dog1.run(363);
-        dog1.swim(10);
+                System.out.println("Общий размер: " + list.size());
 
-        Animal cat = new Cat("Richard");
-        System.out.println("Кота зовут: " + cat.getName());
-        cat.run(125);
+                //Задание №2
+                CustomArrayQueue qlist = new CustomArrayQueue();
+                int[] arr = qlist.init(3);
+                qlist.add(arr, 6);
+                qlist.add(arr, 7);
+                qlist.add(arr, 8);
 
-        Animal cat1 = new Cat("Lusya");
-        System.out.println("Кота зовут: " + cat1.getName());
-        cat1.run(215);
-
-        dog.animalCounter();
-        cat.animalCounter();
-        System.out.println("Всего животных: " + Animal.totalAnimalsCounter());
-
-
-
+                System.out.println("Состояние: " + Arrays.toString(arr));
+                System.out.println("Извлечено: " + qlist.poll(arr));
+                System.out.println("Новое состояние: " + Arrays.toString(arr));
 
 
+                // Задание 1
 
+                Random random = new Random();
+                List<Integer> numbers = IntStream.generate(() -> random.nextInt(1000) + 1)
+                        .limit(100)
+                        .boxed()
+                        .collect(Collectors.toList());
 
+                List<Integer> topTen = numbers.stream()
+                        .sorted()
+                        .limit(10)
+                        .collect(Collectors.toList());
 
-        //Задание №1
-        CustomArrayList list = new CustomArrayList();
-        list.add(5);
-        list.add(10);
-        list.add(15);
+                LinkedHashSet<Integer> uniqueNumbers = new LinkedHashSet<>(topTen);
+                List<Integer> uniqueList = new ArrayList<>(uniqueNumbers);
 
-        System.out.println("Содержимое списка:");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println("Элемент " + i + ": " + list.get(i));
+                List<Integer> finalResult = uniqueList.stream()
+                        .sorted(Collections.reverseOrder())
+                        .collect(Collectors.toList());
+
+                System.out.println("Исходные числа: " + numbers);
+                System.out.println("Топ-10 минимальных: " + topTen);
+                System.out.println("Уникальные значения: " + uniqueList);
+                System.out.println("Финальный результат (по убыванию): " + finalResult);
+
+                // Задание 2
+
+                List<Integer> numbers1 = List.of(5, 12, 3, 8, 15, 3, 12);
+                Collection<Integer> filtered = Filter.filter(numbers, n -> n > 5);
+
+                System.out.println("Начальная коллекция: " + numbers.getClass().getSimpleName());
+                System.out.println("Изменённая коллекция: " + filtered.getClass().getSimpleName());
+                System.out.println("Результат: " + filtered);
+
+                // Задание 3
+
+                List<String> words = Arrays.asList("hello", "", "world", "!", null);
+
+                String result = FilterCollection.filterAndJoin(words, s -> s != null && !s.isEmpty());
+                System.out.println("Результат: " + result);
+
+                // Задание 4
+
+                Collection<Integer> numbers2 = Arrays.asList(3, 1, 2, 2, 4, null, 5, 3);
+
+                System.out.println("ASC: " + CollectionSorter.sortUnique(numbers, CollectionSorter.Direction.ASC));
+                System.out.println("DESC: " + CollectionSorter.sortUnique(numbers, CollectionSorter.Direction.DESC));
+
+                // Задание 5
+
+                System.out.println("5! = " + Factorial.calculate(5));    // 120
+                System.out.println("0! = " + Factorial.calculate(0));     // 1
+                System.out.println("10! = " + Factorial.calculate(10));
+
+                // Задание 6
+
+                List<Boyscout> scouts = Arrays.asList(
+                        new Boyscout("Олег", 14, ScoutProgram.Team.RED),
+                        new Boyscout("Константин", 12, ScoutProgram.Team.BLUE),
+                        new Boyscout("Сергей", 15, ScoutProgram.Team.RED),
+                        new Boyscout("Эдуард", 13, ScoutProgram.Team.GREEN),
+                        new Boyscout("Виктор", 11, ScoutProgram.Team.BLUE)
+                );
+
+                Camp camp = new Camp(scouts);
+                Map<ScoutProgram.Team, List<Boyscout>> result1 = camp.split();
+
+                result1.forEach((team, list) -> {
+                    System.out.println(team + ": " + list);
+                });
+            }
+
         }
-
-        System.out.println("Общий размер: " + list.size());
-
-        //Задание №2
-        CustomArrayQueue qlist = new CustomArrayQueue();
-        int[] arr = qlist.init(3);
-        qlist.add(arr,6);
-        qlist.add(arr,7);
-        qlist.add(arr,8);
-
-        System.out.println("Состояние: " + Arrays.toString(arr));
-        System.out.println("Извлечено: " + qlist.poll(arr));
-        System.out.println("Новое состояние: " + Arrays.toString(arr));
-
-
-
-
-        // Задание 1
-
-        Random random = new Random();
-        List<Integer> numbers = IntStream.generate(() -> random.nextInt(1000) + 1 )
-                .limit(100)
-                .boxed()
-                .collect(Collectors.toList());
-
-        List<Integer> topTen = numbers.stream()
-                .sorted()
-                .limit(10)
-                .collect(Collectors.toList());
-
-        LinkedHashSet<Integer> uniqueNumbers = new LinkedHashSet<>(topTen);
-        List<Integer> uniqueList = new ArrayList<>(uniqueNumbers);
-
-        List<Integer> finalResult = uniqueList.stream()
-                .sorted(Collections.reverseOrder())
-                .collect(Collectors.toList());
-
-        System.out.println("Исходные числа: " + numbers);
-        System.out.println("Топ-10 минимальных: " + topTen);
-        System.out.println("Уникальные значения: " + uniqueList);
-        System.out.println("Финальный результат (по убыванию): " + finalResult);
-
-        // Задание 2
-
-        List<Integer> numbers1 = List.of(5, 12, 3, 8, 15, 3, 12);
-        Collection<Integer> filtered = Filter.filter(numbers, n -> n > 5);
-
-        System.out.println("Начальная коллекция: " + numbers.getClass().getSimpleName());
-        System.out.println("Изменённая коллекция: " + filtered.getClass().getSimpleName());
-        System.out.println("Результат: " + filtered);
-
-        // Задание 3
-
-        List<String> words = Arrays.asList("hello", "", "world", "!", null);
-
-        String result = FilterCollection.filterAndJoin(words, s -> s != null && !s.isEmpty());
-        System.out.println("Результат: " + result);
-
-        // Задание 4
-
-        Collection<Integer> numbers2 = Arrays.asList(3, 1, 2, 2, 4, null, 5, 3);
-
-        System.out.println("ASC: " + CollectionSorter.sortUnique(numbers, CollectionSorter.Direction.ASC));
-        System.out.println("DESC: " + CollectionSorter.sortUnique(numbers, CollectionSorter.Direction.DESC));
-
-        // Задание 5
-
-        System.out.println("5! = " + Factorial.calculate(5));    // 120
-        System.out.println("0! = " + Factorial.calculate(0));     // 1
-        System.out.println("10! = " + Factorial.calculate(10));
-
-        // Задание 6
-
-        List<Boyscout> scouts = Arrays.asList(
-                new Boyscout("Олег", 14, ScoutProgram.Team.RED),
-                new Boyscout("Константин", 12, ScoutProgram.Team.BLUE),
-                new Boyscout("Сергей", 15, ScoutProgram.Team.RED),
-                new Boyscout("Эдуард", 13, ScoutProgram.Team.GREEN),
-                new Boyscout("Виктор", 11, ScoutProgram.Team.BLUE)
-        );
-
-        Camp camp = new Camp(scouts);
-        Map<ScoutProgram.Team, List<Boyscout>> result1 = camp.split();
-
-        result1.forEach((team, list) -> {
-            System.out.println(team + ": " + list);
-        });
     }
-
-     }
-}
